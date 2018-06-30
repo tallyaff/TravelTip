@@ -21,11 +21,11 @@
 
 
 function getSearchPos(place) {
-    debugger;
+    // debugger;
 
     // var geocoder = new google.maps.Geocoder();
 
-    new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': place }, function (results, status) {
             console.log(status)

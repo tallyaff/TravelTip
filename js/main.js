@@ -76,8 +76,8 @@ document.querySelector('.btn1').addEventListener('click', (ev) => {
 
 document.querySelector('.btn-search').addEventListener('click', (ev) => {
     var place = document.querySelector('.search').value;
-
-    locService.getSearchPos(place)
+debugger;
+     locService.getSearchPos(place)
         .then(locs =>{
             console.log('User result is:', locs);
 
