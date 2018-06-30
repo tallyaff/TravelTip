@@ -33,7 +33,7 @@ function getAddress(geocoder, lat, lng) {
     var elAddress = document.querySelector('.address');
     var latlng = { lat: lat, lng: lng };
     geocoder.geocode({ 'location': latlng }, function (results, status) {
-        if (status === 'OK') {
+        if (status == 'OK') {
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location

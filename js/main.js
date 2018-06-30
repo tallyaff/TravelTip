@@ -78,9 +78,12 @@ document.querySelector('.btn-search').addEventListener('click', (ev) => {
     var place = document.querySelector('.search').value;
 
     locService.getSearchPos(place)
-        .then(locs=>{
-            console.log('User position is:', locs);
-            initMap(locs.lat, locs.lng)
-        })
+        .then(locs =>{
+            console.log('User result is:', locs);
 
+        //    initMap(locs.lat,locs.lng)
+        })
 })
+
+
+

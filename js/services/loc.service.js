@@ -21,23 +21,28 @@
 
 
 function getSearchPos(place) {
+    debugger;
 
-    console.log(place)
-    var geocoder = new google.maps.Geocoder();
-    var address = place;
-    var locs = [];
-    geocoder.geocode({ 'address': address }, function (results, status) {
+    // var geocoder = new google.maps.Geocoder();
 
-        if (status === google.maps.GeocoderStatus.OK) {
-            var lat = results[0].geometry.location.lat();
-            var lng = results[0].geometry.location.lng();
-            locs = {
-                lat: lat,
-                lng: lng
+    new Promise(function (resolve, reject) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': place }, function (results, status) {
+            console.log(status)
+            if (status == google.maps.GeocoderStatus.OK) {
+                var locs = {
+                    lat: results[0].geometry.location.lat,
+                    lng: results[0].geometry.location.lng
+                }
+                resolve(locs);
+            } else {
+                // reject status upon un-successful status
+                reject(status);
             }
-            debugger;
-            return Promise.resolve(locs); 
-        }
+
+
+        });
+
     });
 
 }
