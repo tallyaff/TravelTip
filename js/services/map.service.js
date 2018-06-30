@@ -15,7 +15,8 @@ function initMap(lat, lng) {
                     zoom: 15
                 })
             var geocoder = new google.maps.Geocoder;
-            getAddress(geocoder, lat, lng);   
+            getAddress(geocoder, lat, lng);  
+      
               
         })
         

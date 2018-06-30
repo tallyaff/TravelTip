@@ -2,7 +2,7 @@
 
 // import mapService from '.././services/map.service.js'
 
-// function getLocs1() {
+// function getLocs() {
 //     return Promise.resolve(locs);
 
 // }
@@ -20,15 +20,23 @@
 
 
 
-function getSearchPos(geocoder) {
+function getSearchPos(place) {
+
+    console.log(place)
     var geocoder = new google.maps.Geocoder();
-    var address = "new york";
+    var address = place;
+    var locs = [];
     geocoder.geocode({ 'address': address }, function (results, status) {
 
-        if (status == google.maps.GeocoderStatus.OK) {
-            var latitude = results[0].geometry.location.lat();
-            var longitude = results[0].geometry.location.lng();
-            alert(latitude);
+        if (status === google.maps.GeocoderStatus.OK) {
+            var lat = results[0].geometry.location.lat();
+            var lng = results[0].geometry.location.lng();
+            locs = {
+                lat: lat,
+                lng: lng
+            }
+            debugger;
+            return Promise.resolve(locs); 
         }
     });
 

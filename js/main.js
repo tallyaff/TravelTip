@@ -24,7 +24,7 @@ window.onload = () => {
 
     getPositionOnMap();
 
-    
+
 
 
 
@@ -53,10 +53,10 @@ function getPositionOnMap() {
             mapService.initMap(pos.coords.latitude, pos.coords.longitude)
             weatherService.getWeather(pos.coords.latitude, pos.coords.longitude)
         })
-        
-    // .then(pos.coords. => {
-    //     mapService.initMap(latitude, longitude)
-    // })
+
+        // .then(pos.coords. => {
+        //     mapService.initMap(latitude, longitude)
+        // })
 
         .catch(err => {
             console.log('err!!!', err);
@@ -75,13 +75,12 @@ document.querySelector('.btn1').addEventListener('click', (ev) => {
 })
 
 document.querySelector('.btn-search').addEventListener('click', (ev) => {
-    getSearchPos(geocoder);
+    var place = document.querySelector('.search').value;
+
+    locService.getSearchPos(place)
+        .then(locs=>{
+            console.log('User position is:', locs);
+            initMap(locs.lat, locs.lng)
+        })
 
 })
-
-
-function copyToClipboard(){
-
-
-
-}
