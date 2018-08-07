@@ -4,7 +4,6 @@ var map;
 
 
 function initMap(lat, lng) {
-
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
@@ -15,12 +14,8 @@ function initMap(lat, lng) {
                     zoom: 15
                 })
             var geocoder = new google.maps.Geocoder;
-            getAddress(geocoder, lat, lng);  
-      
-              
+            getAddress(geocoder, lat, lng);                
         })
-        
-     
     console.log('Map!', map);
 }
 
@@ -29,7 +24,6 @@ function initMap(lat, lng) {
 
 
 function getAddress(geocoder, lat, lng) {
-
     var elAddress = document.querySelector('.address');
     var latlng = { lat: lat, lng: lng };
     geocoder.geocode({ 'location': latlng }, function (results, status) {
@@ -40,11 +34,6 @@ function getAddress(geocoder, lat, lng) {
             });
             var address = results[0].formatted_address;
             elAddress.innerText = address;
-            // address.setContent(results[0].formatted_address);
-            //   infowindow.open(map, marker);
-            // } else {
-            //   window.alert('No results found');
-            // }
         } else if (status === 'ZERO_RESULTS') {
             elAddress.innerText = 'address did not found'
         }

@@ -2,8 +2,6 @@
 
 const W_KEY = '47115ca4e049c56eeef6b684e924cd20';
 
-
-
 function getWeather(lat, lng) {
 
     var prm = axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=${W_KEY}`)
@@ -23,6 +21,4 @@ function renderWeather(data){
 
 export default {
     getWeather,
-    // addMarker,
-
 }

@@ -1,56 +1,26 @@
-// var locs = [{lat: 11.22, lng: 22.11}]
-
-// import mapService from '.././services/map.service.js'
-
-// function getLocs() {
-//     return Promise.resolve(locs);
-
-// }
-
-
-
-// function getLocs() {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve(locs);
-//         }, 2000)
-//     });
-
-// }
-
 
 
 function getSearchPos(place) {
-    // debugger;
-
-    // var geocoder = new google.maps.Geocoder();
-
     return new Promise(function (resolve, reject) {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': place }, function (results, status) {
             console.log(status)
             if (status == google.maps.GeocoderStatus.OK) {
                 var locs = {
-                    lat: results[0].geometry.location.lat,
-                    lng: results[0].geometry.location.lng
+                    lat: results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
                 }
                 resolve(locs);
             } else {
-                // reject status upon un-successful status
                 reject(status);
             }
-
-
         });
-
     });
-
 }
 
 
 function getPosition() {
-
-    console.log('Getting Pos');
+   console.log('Getting Pos');
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
@@ -87,7 +57,6 @@ function getPosition() {
 
 
 export default {
-    // getLocs: getLocs,
     getPosition: getPosition,
     getSearchPos: getSearchPos
 }
